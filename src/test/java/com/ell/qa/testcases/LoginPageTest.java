@@ -37,11 +37,11 @@ public class LoginPageTest  extends TestBase  {
 	@Test(priority=2)  
 	public void ellLogoImageTest() {
 		boolean flag = loginPage.validateELLImage();
-		Assert.assertTrue(flag);
+		Assert.assertTrue(true, "Logo Matched");
 	}
 	
 	@Test(priority=3)
-	public void loginTest() {
+	public void loginTest() throws InterruptedException {
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 	}
 		

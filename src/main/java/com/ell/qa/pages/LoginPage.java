@@ -21,7 +21,7 @@ public class LoginPage extends TestBase {
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement loginBtn;
 	
-	@FindBy(xpath="//img[(@class='w-full')]")
+	@FindBy(xpath="//img[@id='Login-Elliot-Logo']")
 	WebElement ellLogo;
 	
 	
@@ -40,15 +40,12 @@ public class LoginPage extends TestBase {
 		return ellLogo.isDisplayed();
 	}
 	
-	public HomePage login(String un, String pwd)
+	public HomePage login(String un, String pwd) throws InterruptedException
 	{
 		username.sendKeys(un);
 		password.sendKeys(pwd);
 		loginBtn.click();
-		
-		//JavascriptExecutor js = (JavascriptExecutor)driver;
-    	//js.executeScript("arguments[0].click();", loginBtn);
-    	
+		Thread.sleep(3000);
 		return new HomePage();
 	
 	}

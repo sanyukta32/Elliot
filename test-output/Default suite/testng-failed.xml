@@ -3,15 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.ell.qa.testcases.SignUpPageTest">
+      <class name="com.ell.qa.testcases.HomePageTest">
         <methods>
-          <include name="verifyNotificationPageTest"/>
-          <include name="verifySignUpPageTitleTest"/>
-          <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="verifySettingsPageTest"/>
+          <include name="verifyAllDeviceTest"/>
+          <include name="tearDown"/>
+          <include name="verifyEmaPageTest"/>
         </methods>
-      </class> <!-- com.ell.qa.testcases.SignUpPageTest -->
+      </class> <!-- com.ell.qa.testcases.HomePageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

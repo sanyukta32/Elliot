@@ -12,28 +12,30 @@ import com.ell.qa.pages.HistoricalTablePage;
 import com.ell.qa.pages.HomePage;
 import com.ell.qa.pages.LoginPage;
 import com.ell.qa.pages.RealTimePage;
+import com.ell.qa.pages.SettingsPage;
 
-public class HomePageTest extends TestBase {
+public class SettingsPageTest extends TestBase {
 	
 	LoginPage loginPage;
 	HomePage homePage;
+	SettingsPage settingsPage;
 	
 	EmaPage emaPage;
 	AllDevicesPage allDevicesPage;
 	RealTimePage realTimePage;
 	HistoricalTablePage historicalPage;
 	
-	
-	public HomePageTest()
+	public SettingsPageTest()
 	{
 		super();
+		
 	}
-
+	
 	
 	@BeforeMethod
 	public void setUp() throws InterruptedException {
 		initialization();
-		
+		settingsPage = new SettingsPage();
 		emaPage= new EmaPage();
 		allDevicesPage = new AllDevicesPage();
 		realTimePage = new RealTimePage();
@@ -41,61 +43,25 @@ public class HomePageTest extends TestBase {
 		loginPage = new LoginPage();
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 		
+	
+		
 	}
 	
 	
+
 	@Test(priority=1)
-	public void verifyHomePageTitleTest() {
+	public void verifySettingsPageTitleTest() {
 		String homePageTitle = homePage.verifyHomePageTitle();
 		Assert.assertEquals(homePageTitle, "Elliot Systems", "Home Page Title not matched");
 	}
 	
+	
 	@Test(priority=2)
-	public void verifyUserNameTest() {
-		Assert.assertTrue(homePage.verifyCorrectUserName()); 
+	public void validateNewAddUser() throws InterruptedException {
+		homePage.clickOnSettingsPage();
+		settingsPage.addNewUser();
 		
 	}
-
-	
-	@Test(priority=3)
-	public void verifyEmaPageTest()
-	{
-		emaPage = homePage.clickOnEmaPage();
-	}
-	
-	@Test(priority=4)
-	public void verifyAllDeviceTest() {
-		allDevicesPage = homePage.clickOnAllDevices();
-		
-	}
-	
-	@Test(priority=5)
-	public void verifyRealTimePageTest() throws InterruptedException
-	{
-		realTimePage = homePage.clickOnRealTime();
-	}
-	
-	@Test(priority=6)
-	public void verifyHistoricalPageTest() throws InterruptedException
-	{
-		historicalPage = homePage.clickOnHistoricalTable();
-	}
-	
-	
-	
-	@Test(priority=7)
-	public void verifyNotificationPageTest() throws InterruptedException
-	{
-		 homePage.clickOnNotificationPage();
-	}
-		
-	@Test(priority=8)
-	public void verifySettingsPageTest() throws InterruptedException
-	{
-		 homePage.clickOnSettingsPage();
-	}
-		
-	
 	
 	@AfterMethod()
 	public void tearDown()
@@ -104,4 +70,5 @@ public class HomePageTest extends TestBase {
 	
 		
 	}
+
 }
